@@ -1,16 +1,33 @@
 name: Run Cypress tests
-on: push
+on: [push]
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with: 
-                working-directory: client
-                start: npm run start
-                build: npm run build
-                project: ./src
+    install:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+  
+        - name: Cypress run
+          uses: cypress-io/github-action@v6
+          with:
+            project: cypress
+            browser: chrome
+            build: yarn build
+            start: yarn start
+
+
+# on: push
+# jobs:
+#   cypress-run:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: Cypress run
+#         uses: cypress-io/github-action@v6
+#         with: 
+#                 working-directory: client
+#                 start: npm run start
+#                 build: npm run build
+#                 project: ./src
 

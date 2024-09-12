@@ -10,6 +10,7 @@ jobs:
         - name: Cypress run
           uses: cypress-io/github-action@v6
           with:
+            install-command: npm ci --legacy-peer-deps
             project: cypress
             browser: chrome
             build: npm run build

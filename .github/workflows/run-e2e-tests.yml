@@ -9,6 +9,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with: 
+                working-directory: client
                 start: npm run start
                 build: npm run build
                 project: ./src
